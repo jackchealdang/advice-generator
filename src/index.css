@@ -1,11 +1,18 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Manrope;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* color: rgba(255, 255, 255, 0.87); */
+  /* background-color: #242424; */
+
+  --lightcyan: hsl(193, 38%, 86%);
+  --neongreen: hsl(150, 100%, 66%);
+
+  --grayblue: hsl(217,19%, 38%);
+  --darkgrayblue: hsl(217, 19%, 24%);
+  --darkblue: hsl(218, 23%, 16%);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

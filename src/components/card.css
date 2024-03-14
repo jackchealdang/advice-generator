@@ -1,6 +1,55 @@
 .card {
-  background-color: white;
-  border-radius: 14px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: var(--darkgrayblue);
+  border-radius: 1rem;
+  box-sizing: border-box;
+  width: min(540px, 92%);
+  min-height: 320px;
 
-  color: black;
+  color: var(--lightcyan);
+
+  box-shadow: 0 4px 48px 16px rgba(0, 0, 0, 0.2);
+
+  padding: 2.5rem;
+}
+
+.advice-num {
+  margin-bottom: 1.5rem;
+  font-size: 1.15rem;
+  color: var(--neongreen);
+}
+
+.advice-text {
+  font-size: 1.75rem;
+  text-align: center;
+}
+
+.dice-button {
+  position: absolute;
+  bottom: -2.5rem;
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  /* padding: 2.5rem; */
+  outline: none;
+  box-shadow: none;
+  background-color: var(--neongreen);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.3s ease-out;
+}
+
+.dice-button:hover {
+  box-shadow: 0 0 32px 12px
+    color-mix(in srgb, var(--neongreen) 20%, transparent);
+}
+
+.dice-button img {
+  width: 2rem;
 }

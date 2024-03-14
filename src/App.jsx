@@ -6,37 +6,60 @@ import "./App.css";
 
 function App() {
   const [data, setData] = useState(null);
-  const test = 'test';
+  const [isWaiting, setIsWaiting] = useState(false);
 
   useEffect(() => {
-    fetch('https://api.adviceslip.com/advice')
-    .then(response => response.json())
-    .then(json => {
-      setData(json);
-      console.log(json);
-    })
-    .catch(error => console.error(error));
+    getAPIData();
   }, []);
 
+  function getAPIData() {
+    setData({
+      ...data,
+      slip: {
+        ...data?.slip,
+        id: "----",
+        advice: "Loading advice...",
+      },
+    });
+    fetch("https://api.adviceslip.com/advice")
+      .then((response) => response.json())
+      .then((json) => {
+        setData(json);
+        setIsWaiting(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setIsWaiting(false);
+      });
+  }
+
+  function handleClick(e) {
+    if (!isWaiting) {
+      setIsWaiting(true);
+      getAPIData();
+    }
+  }
+
   return (
-    <>
-        <Card
-          input={data ? data.slip.advice : 'Loading...'}
-        >
-        </Card>
-        <footer>
-          <div className="attribution">
-            Challenge by{" "}
-            <a
-              href="https://www.frontendmentor.io?ref=challenge"
-              target="_blank"
-            >
-              Frontend Mentor
-            </a>
-            . Coded by <a href="#">Jackcheal Dang</a>.
-          </div>
-        </footer>
-    </>
+    <body>
+      <Card
+        data={data ? data.slip : "Loading..."}
+        handleClick={handleClick}
+        isWaiting={isWaiting}
+      ></Card>
+      <footer>
+        <div className="attribution">
+          Challenge by{" "}
+          <a
+            href="https://www.frontendmentor.io?ref=challenge"
+            target="_blank"
+          >
+            Frontend Mentor
+          </a>
+          . Coded by <a href="#">Jackcheal Dang</a>.
+        </div>
+      </footer>
+    </body>
   );
 }
 export default App;
